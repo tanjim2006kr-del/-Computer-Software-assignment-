@@ -3,416 +3,614 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khan Tanjim - Portfolio & Application</title>
+    <title>KHAN TANJIM - Portfolio</title>
+    <!-- Font Awesome for premium icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-dark: #0f172a;
-            --bg-card: #1e293b;
-            --primary: #0ea5e9;
-            --primary-hover: #38bdf8;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
+            --bg-deep: #0a0f1d;
+            --bg-card: #131c31;
+            --bg-input: #1b2641;
+            --primary: #00d2ff;
+            --primary-glow: rgba(0, 210, 255, 0.4);
+            --text-white: #ffffff;
+            --text-gray: #8fa0dd;
+            --accent-green: #00e676;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
+            background-color: var(--bg-deep);
+            color: var(--text-white);
+            overflow-x: hidden;
         }
 
-        /* Hero Section */
-        header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
-            padding: 4rem 2rem 2rem 2rem;
+        /* Profile Header Banner */
+        .hero-banner {
+            background: linear-gradient(180deg, #1b4ba1 0%, #0a0f1d 100%);
+            padding: 4rem 1rem 3rem 1rem;
             text-align: center;
-            border-bottom: 2px solid #1e293b;
-            position: relative;
         }
 
-        .profile-container {
+        .avatar-wrapper {
             position: relative;
-            width: 150px;
-            height: 150px;
+            width: 130px;
+            height: 130px;
             margin: 0 auto 1.5rem auto;
         }
 
-        .profile-img {
-            width: 150px;
-            height: 150px;
+        .avatar-img {
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--primary);
-            box-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
+            box-shadow: 0 0 25px var(--primary-glow);
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+        .hero-banner h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
             text-transform: uppercase;
         }
 
-        header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
+        .hero-banner p {
+            color: #b0c4de;
+            font-size: 1rem;
+            font-weight: 400;
         }
 
         /* Navigation Bar */
         nav {
-            background-color: #111827;
+            background-color: #0d1527;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
             display: flex;
             justify-content: center;
-            padding: 1rem;
-            border-bottom: 1px solid #1e293b;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+            padding: 0.75rem;
+            border-bottom: 1px solid #1e2d4a;
         }
 
         nav a {
-            color: var(--text-muted);
+            color: var(--text-gray);
             text-decoration: none;
-            margin: 0 1.5rem;
-            font-weight: 600;
-            transition: color 0.3s ease;
-            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            margin: 0 0.25rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 20px;
+            transition: all 0.3s ease;
         }
 
         nav a:hover, nav a.active {
-            color: var(--primary);
+            color: var(--text-white);
+            background-color: #1e3563;
         }
 
-        /* Container & Sections */
-        .container {
-            max-width: 1000px;
+        /* Layout Grid */
+        .main-container {
+            max-width: 1100px;
             margin: 2rem auto;
             padding: 0 1.5rem;
         }
 
-        section {
-            padding: 3rem 0;
-            border-bottom: 1px solid #1e293b;
-        }
-
-        section h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+        .section-title {
+            font-size: 1.4rem;
             color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
         }
 
-        /* Card Style */
-        .card {
+        /* Content Blocks/Cards */
+        .dashboard-card {
             background-color: var(--bg-card);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 2rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2.5rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            border: 1px solid #1c2a47;
         }
 
-        /* Smart To-Do App Styles */
-        .todo-input-group {
+        /* Advanced To-Do App */
+        .todo-header-desc {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .todo-box {
             display: flex;
-            gap: 10px;
-            margin-top: 1rem;
+            gap: 12px;
+            margin-bottom: 1.5rem;
         }
 
-        .todo-input-group input {
+        .todo-box input {
             flex: 1;
-            padding: 0.75rem 1rem;
+            background-color: var(--bg-input);
+            border: 1px solid #2d3d63;
+            padding: 0.8rem 1.2rem;
             border-radius: 8px;
-            border: 1px solid #334155;
-            background-color: #0f172a;
             color: white;
             font-size: 1rem;
         }
 
-        .todo-input-group input:focus {
+        .todo-box input:focus {
             outline: none;
             border-color: var(--primary);
         }
 
-        .todo-btn {
+        .add-task-btn {
             background-color: var(--primary);
-            color: white;
+            color: #050b14;
             border: none;
-            padding: 0.75rem 1.5rem;
+            padding: 0 1.5rem;
             border-radius: 8px;
-            font-weight: bold;
+            font-weight: 700;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: opacity 0.2s;
         }
 
-        .todo-btn:hover {
-            background-color: var(--primary-hover);
+        .add-task-btn:hover {
+            opacity: 0.9;
         }
 
-        .todo-list {
-            margin-top: 1.5rem;
-            list-style: none;
-        }
-
-        .todo-item {
-            background: #0f172a;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 0.75rem;
+        .task-item {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            background-color: var(--bg-deep);
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 0.8rem;
             border-left: 4px solid var(--primary);
-            animation: fadeIn 0.3s ease;
         }
 
-        .delete-btn {
-            background: none;
-            border: none;
-            color: #ef4444;
+        .task-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .task-checkbox {
+            width: 18px;
+            height: 18px;
             cursor: pointer;
-            font-size: 1.1rem;
-            transition: transform 0.2s;
         }
 
-        .delete-btn:hover {
-            transform: scale(1.2);
+        .task-status-actions {
+            display: flex;
+            gap: 15px;
+            font-size: 0.9rem;
         }
 
-        /* Resume Grid */
-        .resume-grid {
+        .status-complete {
+            color: var(--accent-green);
+            cursor: pointer;
+        }
+
+        .status-edit {
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Flex & Grid layouts for content */
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .split-grid, .showcase-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        /* Project Showcase Cards */
+        .showcase-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
         }
 
-        @media (max-width: 768px) {
-            .resume-grid { grid-template-columns: 1fr; }
+        .project-item {
+            background-color: var(--bg-deep);
+            border-radius: 12px;
+            padding: 1.2rem;
+            border: 1px solid #1c2a47;
         }
 
-        .resume-sub-card {
-            background: #0f172a;
-            padding: 1.5rem;
+        .project-thumb {
+            width: 100%;
+            height: 140px;
+            background-color: #1b2641;
             border-radius: 8px;
-            border: 1px solid #233554;
-        }
-
-        .resume-sub-card h3 {
-            margin-bottom: 0.5rem;
-            color: #e2e8f0;
-        }
-
-        .tags span {
-            display: inline-block;
-            background: rgba(14, 165, 233, 0.15);
-            color: var(--primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin: 0.25rem;
-            font-weight: 500;
-        }
-
-        /* Contact Section */
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-item {
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: 1rem;
-            font-size: 1.1rem;
-            background: #0f172a;
-            padding: 1rem;
-            border-radius: 8px;
-            border: 1px solid #233554;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .contact-item i {
+        .project-item h4 {
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .project-item p {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 0.8rem;
+        }
+
+        .project-link {
             color: var(--primary);
-            font-size: 1.3rem;
-            width: 25px;
-        }
-
-        .contact-item a {
-            color: var(--text-main);
             text-decoration: none;
-            transition: color 0.2s;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        .contact-item a:hover {
-            color: var(--primary);
+        /* Skills Matrix Progress Bars */
+        .skill-row {
+            margin-bottom: 1.2rem;
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
             font-size: 0.9rem;
-            border-top: 1px solid #1e293b;
+            margin-bottom: 0.4rem;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .progress-bar-bg {
+            background-color: #1b2641;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #0072ff, var(--primary));
+            height: 100%;
+            border-radius: 5px;
+        }
+
+        /* Blog Posts Layout */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .blog-card {
+            background-color: var(--bg-deep);
+            border-radius: 12px;
+            padding: 1rem;
+            border: 1px solid #1c2a47;
+        }
+
+        .blog-cover {
+            height: 110px;
+            background-color: #1b2641;
+            border-radius: 8px;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .blog-card h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .blog-readmore {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        /* Connect & Contact Footer Block */
+        .contact-widget-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact-widget-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-icons-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            align-content: center;
+        }
+
+        .icon-item-box {
+            text-align: center;
+        }
+
+        .icon-item-box i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .icon-item-box span {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        .icon-item-box a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            word-break: break-all;
+        }
+
+        .map-box {
+            border-radius: 12px;
+            overflow: hidden;
+            height: 180px;
+            border: 1px solid #1c2a47;
+        }
+
+        /* Global Footer */
+        footer {
+            background-color: #060a14;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            border-top: 1px solid #121929;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="profile-container">
-            <img src="tanjim.jpg" alt="Khan Tanjim" class="profile-img" onerror="this.src='https://via.placeholder.com/150/0ea5e9/ffffff?text=KT'">
+    <!-- Header / Image Area -->
+    <header class="hero-banner">
+        <div class="avatar-wrapper">
+            <!-- image_c05cdc.png এর জায়গায় আপনি আপনার নিজের ছবি ব্যবহার করবেন -->
+            <img src="image_c05cdc.png" alt="Khan Tanjim" class="avatar-img" onerror="this.src='https://via.placeholder.com/150/00d2ff/ffffff?text=Tanjim'">
         </div>
         <h1>Khan Tanjim</h1>
-        <p><i class="fa-solid fa-graduation-cap"></i> Computer Engineering Student | Konkuk University</p>
+        <p>Computer Engineering Student | Konkuk University</p>
     </header>
 
+    <!-- Navigation Area -->
     <nav>
-        <a href="#home-app" class="active"><i class="fa-solid fa-laptop-code"></i> Home & App</a>
-        <a href="#resume"><i class="fa-solid fa-file-invoice"></i> My Resume</a>
-        <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+        <a href="#home-app" class="active">Home & App</a>
+        <a href="#resume">My Resume</a>
+        <a href="#projects">Project Showcase</a>
+        <a href="#skills">Skills</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
     </nav>
 
-    <div class="container">
+    <div class="main-container">
 
-        <section id="home-app">
-            <h2><i class="fa-solid fa-star"></i> Smart To-Do Application (AI Assisted)</h2>
-            <div class="card">
-                <p style="color: var(--text-muted); margin-bottom: 1rem;">Manage your daily tasks and academic assignments efficiently using this dynamic module:</p>
-                <div class="todo-input-group">
-                    <input type="text" id="taskInput" placeholder="Enter a new academic task...">
-                    <button class="todo-btn" onclick="addTask()">Add Task</button>
-                </div>
-                <ul class="todo-list" id="taskList">
-                    <li class="todo-item">
-                        <span>Complete AI Project Assignment for Konkuk University</span>
-                        <button class="delete-btn" onclick="deleteTask(this)"><i class="fa-solid fa-trash"></i></button>
-                    </li>
-                </ul>
+        <!-- 1. To-Do Application Section -->
+        <div id="home-app" class="dashboard-card">
+            <h3 class="section-title">Smart To-Do Application (AI Assisted)</h3>
+            <p class="todo-header-desc">Manage your daily tasks and academic assignments efficiently using this dynamic module:</p>
+            <div class="todo-box">
+                <input type="text" id="todoInput" placeholder="Complete Web Page Assignment">
+                <button class="add-task-btn" onclick="addNewTask()">Add Task</button>
             </div>
-        </section>
-
-        <section id="resume">
-            <h2><i class="fa-solid fa-user-tie"></i> My Resume / Self-Introduction</h2>
-            <div class="card resume-grid">
-                <div class="resume-sub-card">
-                    <h3><i class="fa-solid fa-university" style="color: var(--primary);"></i> Education</h3>
-                    <p><strong>B.Sc. in Computer Engineering</strong></p>
-                    <p style="color: var(--text-muted);">Konkuk University, South Korea</p>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">Current Student (ID: 202616401)</p>
+            <div id="taskContainer">
+                <div class="task-item">
+                    <div class="task-left">
+                        <input type="checkbox" class="task-checkbox">
+                        <span>Finalize CV</span>
+                    </div>
+                    <div class="task-status-actions">
+                        <span class="status-complete"><i class="fa-solid fa-check"></i> Complete</span>
+                        <span class="status-edit">Edit</span>
+                    </div>
                 </div>
-                <div class="resume-sub-card">
-                    <h3><i class="fa-solid fa-code" style="color: var(--primary);"></i> Skills</h3>
-                    <div class="tags" style="margin-top: 0.5rem;">
-                        <span>HTML5 & CSS3</span>
-                        <span>JavaScript (ES6+)</span>
-                        <span>AI Tools Integration</span>
-                        <span>Git & GitHub</span>
-                        <span>Problem Solving</span>
+                <div class="task-item">
+                    <div class="task-left">
+                        <input type="checkbox" class="task-checkbox">
+                        <span>Check eCampus Announcements</span>
+                    </div>
+                    <div class="task-status-actions">
+                        <span class="status-complete"><i class="fa-solid fa-check"></i> Complete</span>
+                        <span class="status-edit">Edit</span>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section id="contact">
-            <h2><i class="fa-solid fa-address-book"></i> Contact Me</h2>
-            <div class="card">
-                <div class="contact-info">
-                    <div class="contact-item">
+        <!-- 2. Projects & Skills Dual Row Grid -->
+        <div class="split-grid">
+            <!-- Project Section -->
+            <div id="projects" class="dashboard-card" style="margin-bottom:0;">
+                <h3 class="section-title">Project Showcase</h3>
+                <div class="showcase-grid">
+                    <div class="project-item">
+                        <div class="project-thumb">
+                            <span style="color:#3a5285; font-size:2rem;"><i class="fa-solid fa-wallet"></i></span>
+                        </div>
+                        <h4>AI-based Personal Finance Tracker</h4>
+                        <p>AI-এর মাধ্যমে আপনার খরচ নিয়ন্ত্রণের সমাধান।</p>
+                        <a href="#" class="project-link">Link Here <i class="fa-solid fa-external-link"></i></a>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-thumb">
+                            <span style="color:#3a5285; font-size:2rem;"><i class="fa-solid fa-graduation-cap"></i></span>
+                        </div>
+                        <h4>Konkuk eCampus Portal UI Redesign</h4>
+                        <p>কনকুক ই-ক্যাম্পাস পোর্টালের নতুন রুপ।</p>
+                        <a href="#" class="project-link">Link More <i class="fa-solid fa-external-link"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Progress Grid -->
+            <div id="skills" class="dashboard-card" style="margin-bottom:0;">
+                <h3 class="section-title">Skills Matrix</h3>
+                
+                <div class="skill-row">
+                    <div class="skill-info"><span>Python</span><span>90%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-fill" style="width: 90%;"></div></div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-info"><span>Web Development (HTML/CSS/JS)</span><span>60%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-fill" style="width: 60%;"></div></div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-info"><span>AI/ML</span><span>73%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-fill" style="width: 73%;"></div></div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-info"><span>Science</span><span>53%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-fill" style="width: 53%;"></div></div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-info"><span>CSS</span><span>33%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-fill" style="width: 33%;"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Recent Blog Posts Grid -->
+        <div id="blog" class="dashboard-card">
+            <h3 class="section-title">Recent Blog Posts</h3>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-cover" style="background: linear-gradient(135deg, #1e3c72, #2a5298);">Using AI Tools for Study Productivity</div>
+                    <h4>Using AI Tools for Study Productivity</h4>
+                    <a href="#" class="blog-readmore">Read More ></a>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-cover" style="background: #18191c; color:#fff;"><i class="fa-brands fa-github" style="font-size:1.5rem; margin-right:5px;"></i> GitHub Pages</div>
+                    <h4>Introduction to GitHub Pages</h4>
+                    <a href="#" class="blog-readmore">Read More ></a>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-cover" style="background: #fff; color:#000; border:1px solid #ddd;">GitHub Pages</div>
+                    <h4>Introduction to GitHub Productivity</h4>
+                    <a href="#" class="blog-readmore">Read More ></a>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-cover" style="background: linear-gradient(135deg, #11998e, #38ef7d);">Konkuk eCampus Redesign Portal</div>
+                    <h4>Konkuk eCampus Portal Redesign: Power Productivity</h4>
+                    <a href="#" class="blog-readmore">Read More ></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Connect & Contact Footer Block -->
+        <div id="contact" class="dashboard-card">
+            <h3 class="section-title" style="text-align: center; margin-bottom: 2rem;">Connect & Contact</h3>
+            <div class="contact-widget-grid">
+                
+                <!-- Icons Left Box -->
+                <div class="contact-icons-list">
+                    <div class="icon-item-box">
                         <i class="fa-solid fa-envelope"></i>
-                        <div>
-                            <strong style="display:block; font-size:0.85rem; color:var(--text-muted);">Email</strong>
-                            <a href="mailto:contact.tanjim.khan@gmail.com">contact.tanjim.khan@gmail.com</a>
-                        </div>
+                        <span>Email</span>
+                        <a href="mailto:contact.tanjim.khan@gmail.com">contact.tanjim.khan@gmail.com</a>
                     </div>
-                    <div class="contact-item">
+                    <div class="icon-item-box">
                         <i class="fa-solid fa-phone"></i>
-                        <div>
-                            <strong style="display:block; font-size:0.85rem; color:var(--text-muted);">Phone Number</strong>
-                            <a href="tel:01064535132">010-6453-5132</a>
-                        </div>
+                        <span>Phone</span>
+                        <a href="tel:01064535132">01064535132</a>
                     </div>
-                    <div class="contact-item">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <div>
-                            <strong style="display:block; font-size:0.85rem; color:var(--text-muted);">Location</strong>
-                            <span>Seoul, South Korea</span>
-                        </div>
+                    <div class="icon-item-box">
+                        <i class="fa-brands fa-github"></i>
+                        <span>GitHub</span>
+                        <a href="https://github.com/tanjim2006kr-drl" target="_blank">tanjim2006kr-drl</a>
+                    </div>
+                    <div class="icon-item-box">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                        <a href="#" target="_blank">LinkedIn</a>
                     </div>
                 </div>
+
+                <!-- Map Right Box (Mock Embedded Leaflet/Static View) -->
+                <div class="map-box">
+                    <iframe src="https://www.google.com/maps/embed?pb=!11m18!1m12!1m3!1d3163.2977771746765!2d127.07180177637825!3d37.543282298135894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca4da57f6d2f3%3A0x64319fb9b34360e2!2sKonkuk%20University!5e0!3m2!1sen!2skr!4v1719231800000!5m2!1sen!2skr" 
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
             </div>
-        </section>
+        </div>
 
     </div>
 
+    <!-- Global Layout Sticky Footer -->
     <footer>
-        <p>&copy; 2026 Khan Tanjim. All Rights Reserved. Built with AI Assistance.</p>
+        <p>© 2026 Khan Tanjim. Built with AI tools on <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>. AI টুল ব্যবহার করে নিখুঁতভাবে তৈরি।</p>
     </footer>
 
     <script>
-        // To-Do App Logic
-        function addTask() {
-            const taskInput = document.getElementById('taskInput');
-            const taskText = taskInput.value.trim();
+        // Dynamic To-Do List Handler
+        function addNewTask() {
+            const input = document.getElementById('todoInput');
+            const taskText = input.value.trim();
+            if(!taskText) return;
 
-            if (taskText === '') {
-                alert('Please enter a task!');
-                return;
-            }
-
-            const taskList = document.getElementById('taskList');
-            const li = document.createElement('li');
-            li.className = 'todo-item';
-            li.innerHTML = `
-                <span>${taskText}</span>
-                <button class="delete-btn" onclick="deleteTask(this)"><i class="fa-solid fa-trash"></i></button>
+            const container = document.getElementById('taskContainer');
+            const taskDiv = document.createElement('div');
+            taskDiv.className = 'task-item';
+            taskDiv.innerHTML = `
+                <div class="task-left">
+                    <input type="checkbox" class="task-checkbox">
+                    <span>${taskText}</span>
+                </div>
+                <div class="task-status-actions">
+                    <span class="status-complete" onclick="this.parentElement.parentElement.remove()"><i class="fa-solid fa-trash" style="color:#ef4444;"></i> Delete</span>
+                    <span class="status-edit">Edit</span>
+                </div>
             `;
-
-            taskList.appendChild(li);
-            taskInput.value = '';
+            container.appendChild(taskDiv);
+            input.value = '';
         }
 
-        function deleteTask(button) {
-            const item = button.parentElement;
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(-10px)';
-            setTimeout(() => {
-                item.remove();
-            }, 300);
-        }
-
-        // Active Nav Link Highlighting on Scroll
-        const sections = document.querySelectorAll('section');
+        // Navigation Active State Toggle on click
         const navLinks = document.querySelectorAll('nav a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 150) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(a => {
-                a.classList.remove('active');
-                if (a.getAttribute('href').includes(current)) {
-                    a.classList.add('active');
-                }
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                link.classList.add('active');
             });
         });
     </script>
